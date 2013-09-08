@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ page.title }}</title>
+        <link rel="stylesheet" href="/assets/css/normalize-2.1.3.css" />
+        <link rel="stylesheet" href="/assets/css/site.css" />
+        <link href='http://fonts.googleapis.com/css?family=Tangerine:700' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header clearfix">
+            <a class="title fl-l tangerine" href="/"><h1>{{ site.title }}</h1></a>
+            <span class="sub-title fl-l">{{ site.subtitle }}</span>
+
+            <ul class="nav fl-r clearfix">
+              <li class="fl-l"><a href="/">首页</a></li>
+              <li class="fl-l"><a href="/tech">Tech</a></li>
+              <li class="fl-l"><a href="/literature">诗和远方</a></li>
+            </ul>
+          </div>
+
+          <div class="content">
+            {{ content }}
+          </div>
+
+          <div class="footer clearfix">
+            <span class="fl-l">Powered by <a href="http://jekyllrb.com">Jekyll</a></span>
+            <span class="fl-r">Designed and implemented by myself, all rights reserved.</span>
+          </div>
+        </div>
+
+    </body>
+</html>

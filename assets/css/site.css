@@ -1,0 +1,56 @@
+body {
+  background: url("/assets/img/bg.png") #eee repeat; 
+}
+
+body, button, input, select, textarea {
+  font:500 0.875em/1.8 Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+}
+
+::-webkit-selection { color: #fff; background: #e97d7a; } 
+::-moz-selection { color: #fff; background: #e97d7a; } 
+::-o-selection { color: #fff; background: #e97d7a; } 
+::selection { color: #fff; background: #e97d7a; } 
+.clearfix:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.clearfix {zoom:1; /* for IE6 IE7 */}
+.fl-r {float:right}
+.fl-l {float:left}
+a {text-decoration:underline;color: #000;}
+a:hover {color: #e97d7a;}
+.tangerine {font-family: Tangerine;font-weight:bold;}
+
+.site {width: 960px;margin: 0 auto;}
+.site .header {line-height:40px;padding-top:25px;border-bottom:1px solid #ccc;-moz-box-shadow: 0 1px 0 #FFF;-webkit-box-shadow: 0 1px 0 #FFF;box-shadow: 0 1px 0 #FFF;}
+.site .header .title {display: inline-block;text-indent:-10000px;background:url('/assets/img/logo.png') no-repeat;width:185px;height:40px;position:relative;bottom:8px;}
+.site .header .sub-title {color:#B6B6B6;margin-left:58px;font-size:12px;font-style:italic;}
+.site .header .nav {display:inline-block;margin:0;list-style:none;}
+.site .header .nav li {padding:0 15px;text-decoration:none;}
+.site .header .nav li a{text-decoration:none;color:#888;}
+
+.site .content {min-height:400px;}
+
+.site .footer {color: #999;border-top:1px solid #ccc;margin-top:85px;padding:5px 0 20px 0;font-size:12px;}
+.site .footer a{color: #999;}
+
+#home p.tangerine{font-size:28px;text-align: center;line-height:33px;}
+#home p.large{font-size:35px;}
+#home .categories {margin:0;padding:0;width:100%;text-align:center;}
+#home .categories li {list-style:none;width:320px;}
+#home .categories li .desc {display:block;font-size:28px;}
+#home .categories li .graph {width:280px;height:146px;margin:0 auto;display:block;vertical-align:middle;line-height:146px;font-size:0;border: 1px solid #ccc;}
+#home .categories li a.graph:hover {text-decoration:none;font-size:30px;color:#000;}
+#home .categories li.literature .graph {background-image:url("/assets/img/literature.png")}
+#home .categories li.tech .graph {background-image:url("/assets/img/tech.png");background-position:-14px -19px;}
+#home .categories li.photography .graph {background-image:url("/assets/img/photography.png")}
+#home .categories li .graph:hover {background:none;}
+#home ul.profiles {list-style:none;text-align:center;}
+#home ul.profiles li {display:inline-block;width:48px;height:48px;margin:0 25px;}
+#home ul.profiles li a  {text-indent:-10000px;width:100%;height:100%;display:inline-block;}
+#home ul.profiles li.douban {background:url("/assets/img/douban.png") no-repeat;}
+#home ul.profiles li.github {background:url("/assets/img/github.png") no-repeat;}
+#home ul.profiles li.flickr {background:url("/assets/img/flickr.png") no-repeat;}
+#home ul.profiles li.weibo {background:url("/assets/img/weibo.png") no-repeat;}
+#home ul.profiles li.twitter {background:url("/assets/img/twitter.png") no-repeat;}
+#home ul.profiles li.foursquare {background:url("/assets/img/foursquare.png") no-repeat;}
+
+#category-page {}
+#category-page blockquote {border-left: 3px solid #ddd;margin:0;padding-left:50px;}
