@@ -16,7 +16,17 @@ body, button, input, select, textarea {
 .fl-l {float:left}
 a {text-decoration:underline;color: #000;}
 a:hover {color: #e97d7a;}
-.tangerine {font-family: Tangerine;font-weight:bold;}
+
+@font-face {
+  font-family: 'Tangerine';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Tangerine Bold'), local('Tangerine-Bold'), url("/assets/font/tangerine.woff") format('woff');
+}
+
+.tangerine {font-family: Tangerine, recursive;font-weight:bold;}
+
+
 
 .site {width: 960px;margin: 0 auto;}
 .site .header {line-height:40px;padding-top:25px;border-bottom:1px solid #ccc;-moz-box-shadow: 0 1px 0 #FFF;-webkit-box-shadow: 0 1px 0 #FFF;box-shadow: 0 1px 0 #FFF;}
@@ -37,20 +47,17 @@ a:hover {color: #e97d7a;}
 #home .categories li {list-style:none;width:320px;}
 #home .categories li .desc {display:block;font-size:28px;}
 #home .categories li .graph {width:280px;height:146px;margin:0 auto;display:block;vertical-align:middle;line-height:146px;font-size:0;border: 1px solid #ccc;}
-#home .categories li a.graph:hover {text-decoration:none;font-size:30px;color:#000;}
+#home .categories li a.graph:hover {text-decoration:none;font-size:30px;color:#000;filter:grayscale(100%)}
 #home .categories li.literature .graph {background-image:url("/assets/img/literature.png")}
 #home .categories li.tech .graph {background-image:url("/assets/img/tech.png");background-position:-14px -19px;}
 #home .categories li.photography .graph {background-image:url("/assets/img/photography.png")}
 #home .categories li .graph:hover {background:none;}
 #home ul.profiles {list-style:none;text-align:center;}
 #home ul.profiles li {display:inline-block;width:48px;height:48px;margin:0 25px;}
-#home ul.profiles li a  {text-indent:-10000px;width:100%;height:100%;display:inline-block;}
-#home ul.profiles li.douban {background:url("/assets/img/douban.png") no-repeat;}
-#home ul.profiles li.github {background:url("/assets/img/github.png") no-repeat;}
-#home ul.profiles li.flickr {background:url("/assets/img/flickr.png") no-repeat;}
-#home ul.profiles li.weibo {background:url("/assets/img/weibo.png") no-repeat;}
-#home ul.profiles li.twitter {background:url("/assets/img/twitter.png") no-repeat;}
-#home ul.profiles li.foursquare {background:url("/assets/img/foursquare.png") no-repeat;}
+#home ul.profiles li a {width:100%;height:100%;display:inline-block;text-decoration:none;}
+#home ul.profiles li a i {color:#888;}
+#home ul.profiles li a:hover i {color:#000;}
+#home ul.profiles li a .name {display:none;}
 
 #category-page {}
 #category-page blockquote {border-left: 3px solid #ddd;margin:0;padding-left:50px;}
