@@ -19,7 +19,11 @@ a {text-decoration:underline;color: #000;}
   font-family: 'Tangerine';
   font-style: normal;
   font-weight: 700;
-  src: local('Tangerine Bold'), local('Tangerine-Bold'), url("/assets/font/tangerine.woff") format('woff');
+  src: url("/assets/font/tangerine.eot");
+  src: url("/assets/font/tangerine.eot?#iefix") format("embedded-opentype"),
+       url("/assets/font/tangerine.woff") format("woff"),
+       url("/assets/font/tangerine.ttf") format("truetype");
+  
 }
 
 .tangerine {font-family: Tangerine, recursive;font-weight:bold;}
@@ -31,8 +35,8 @@ a {text-decoration:underline;color: #000;}
 .site .header .title {display: inline-block;text-indent:-10000px;background:url('/assets/img/logo.png') no-repeat;width:185px;height:40px;position:relative;bottom:8px;}
 .site .header .sub-title {color:#B6B6B6;margin-left:58px;font-size:12px;font-style:italic;}
 .site .header .nav {display:inline-block;margin:0;list-style:none;}
-.site .header .nav li {padding:0 15px;text-decoration:none;}
-.site .header .nav li {color:#888;}
+.site .header .nav li {padding:0 15px;text-decoration:none;color:#888;}
+.site .header .nav li.current {text-decoration:underline;color:#000;font-weight:bold;}
 .site .header .nav li a {text-decoration:none;}
 
 .site .content {min-height:400px;}

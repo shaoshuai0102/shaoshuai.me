@@ -17,9 +17,9 @@
             <span class="sub-title fl-l">{{ site.subtitle }}</span>
 
             <ul class="nav fl-r clearfix">
-              <li class="fl-l"><a href="/">首页</a></li>
-              <li class="fl-l"><a href="/tech">Tech</a></li>
-              <li class="fl-l"><a href="/literature">诗和远方</a></li>
+              <li class="fl-l {% if page.url == '/' or page.url == '/index.html' %} current {% endif %}"><a href="/">首页</a></li>
+              <li class="fl-l {% if page.categories[0] == 'tech' or page.categoryName == 'tech' %} current {% endif %}"><a href="/tech">Tech</a></li>
+              <li class="fl-l {% if page.categories[0] == 'literature' or page.categoryName == 'literature' %} current {% endif %}"><a href="/literature">诗和远方</a></li>
             </ul>
           </div>
 
