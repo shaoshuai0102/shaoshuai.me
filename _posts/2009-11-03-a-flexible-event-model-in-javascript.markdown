@@ -60,12 +60,16 @@ Common GUI event handler properties in the DOM
 
 W3C事件模型支持将多个事件监听函数绑定到同一DOM元素上。但是这一模型面临严重的浏览器兼容性问题：
 
-    Browsers           |   none-ie                 |        IE
-    -----------------------------------------------------------------------
-    Methods            |   addEventListener()      |        attachEvent()
-                       |   removeEventListener()   |        detachEvent()
-    -----------------------------------------------------------------------
-    context object     |   DOM element             |        Window object
+    ----------------------------------------------------
+    |Browsers      |none-ie              |IE           |
+    ----------------------------------------------------
+    |Methods       |addEventListener()   |attachEvent()|
+    ----------------------------------------------------
+    |              |removeEventListener()|detachEvent()|
+    ----------------------------------------------------
+    |context object|DOM element          |Window object|
+    ----------------------------------------------------
+
 
 第一个兼容性问题比较好解决，第二个问题比较棘手：由于IE浏览器中传递给事件处理函数的上下文是Window对象，使得无法确定到底哪个DomElement触发了该事件！
 

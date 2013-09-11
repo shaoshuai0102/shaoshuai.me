@@ -1,9 +1,5 @@
-body {
+html {
   background: url("/assets/img/bg.png") #eee repeat; 
-}
-
-body, button, input, select, textarea {
-  font:500 0.875em/1.8 Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
 }
 
 ::-webkit-selection { color: #fff; background: #e97d7a; } 
@@ -45,7 +41,7 @@ a {text-decoration:underline;color: #000;}
 .site .footer a {color: #999;}
 .site .footer a:hover {color: #e97d7a;}
 
-#home p.tangerine{font-size:28px;text-align: center;line-height:33px;}
+#home p.tangerine{font-size:28px;text-align: center;line-height:33px;margin: 25px 0;}
 #home p.large{font-size:35px;}
 #home .categories {margin:0;padding:0;width:100%;text-align:center;}
 #home .categories li {list-style:none;width:320px;}
@@ -64,14 +60,31 @@ a {text-decoration:underline;color: #000;}
 #home ul.profiles li a .name {display:none;}
 
 #category-page {padding: 50px 0;}
-#category-page i.logo {font-size:220px;line-height: 50px;color:#B6B6B6;margin-top:10px;}
-#category-page .slogan {color:#888;font-size:20px;font-weight:bold;margin:0 0 30px 0;font-style:italic;}
+#category-page i.logo {font-size:220px;line-height: 50px;color:#B6B6B6;margin:75px 0 0 55px;;}
+#category-page .slogan {color:#888;font-size:20px;font-weight:bold;font-style:italic;background:none;font-family:inherit;margin: -10px 0 30px 0;padding-left:2em;}
 #category-page .posts {width:600px;list-style:none;line-height:40px;margin:0;padding:0;}
 #category-page .posts .post {font-size:18px;}
 #category-page .posts .post .date{color:#B6B6B6;}
 #category-page .posts .post .title{}
 
-#post-page {background:#fff;padding: 35px 155px;margin:20px auto;border: 1px solid #fff;-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15)}
-#post-page .artical {}
+#post-page {background:#fff;padding: 45px 179px;margin:20px auto;border: 1px solid #fff;-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15)}
+#post-page .artical .title {font-weight:bold}
+#post-page .artical .meta {color:#888;}
+#post-page .artical .content {margin-top:30px;}
+#post-page .artical .content code {
+    background-color: #F8F8F8;
+    border: 1px solid #EAEAEA;
+    border-radius: 3px 3px 3px 3px;
+    margin: 0 2px;
+    padding: 0 5px;
+    white-space: nowrap;
+}
+#post-page .artical .content pre > code {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+}
 
 #post-page #disqus_thread {margin-top: 50px;}

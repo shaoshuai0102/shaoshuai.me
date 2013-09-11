@@ -10,7 +10,7 @@ layout: default
     <ul class="posts">
       {% for post in site.categories[page.categoryName] %}
         <li class="post">
-          <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span> - <a href="{{post.url}}" class="title">{{post.title}}</a>
+          <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>&nbsp;&nbsp;&nbsp;<a href="{{post.url}}" class="title">{{post.title}}</a>
         </li>
       {% endfor %}
     </ul>

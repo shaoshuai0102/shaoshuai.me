@@ -12,28 +12,32 @@ categories: tech
 
 友情提示，以下说的是IE 7－
 
-*   对于内联元素，比如`<span><a><textarea><input>`等：
+### 对于内联元素
 
-    *   `display:inline-block;`可以触发inline-block behavior
+比如`<span><a><textarea><input>`等：
 
-    *   `zoom:1;height:0;`可以触发inline-block behavior
+*   `display:inline-block;`可以触发inline-block behavior
 
-    在这里a和b两种方法都可以使元素获得hasLayout属性，故此，对于内联元素只要使其获得hasLayout属性就可以触发inline-block behavior。
+*   `zoom:1;height:0;`可以触发inline-block behavior
 
-*   对于块级元素，比如`<div><h1><p><li><ul><ol><li>`等：
+在这里a和b两种方法都可以使元素获得hasLayout属性，故此，对于内联元素只要使其获得hasLayout属性就可以触发inline-block behavior。
 
-    *   `display:inline-block;`不可以触发inline-block behavior
+### 对于块级元素
 
-    *   `zoom:1;height:0;`不可以触发inline-block behavior
+比如`<div><h1><p><li><ul><ol><li>`等：
 
-    *   `zoom:1;height:0;display:inline;`可以触发inline-block behavior
+*   `display:inline-block;`不可以触发inline-block behavior
 
-    在这里可以看出通过添加hasLayout属性不可以使块级元素触发inline-block behavior，但是当加上display:inline之后就可以触发了。甚至还存在一种看起来恨诡异的方法：
+*   `zoom:1;height:0;`不可以触发inline-block behavior
 
-    *   在两个选择器中按顺序分别定义`display:inline-block;`和`display:inline;`可以触发inline-block behavior。比如（必须按照这个顺序才可以，也不可以写在同一个选择器中，即使同一个选择器也要写两次）
+*   `zoom:1;height:0;display:inline;`可以触发inline-block behavior
 
-            div.test { display: inline-block; }
-            div.test { display: inline; }
+在这里可以看出通过添加hasLayout属性不可以使块级元素触发inline-block behavior，但是当加上display:inline之后就可以触发了。甚至还存在一种看起来恨诡异的方法：
+
+*   在两个选择器中按顺序分别定义`display:inline-block;`和`display:inline;`可以触发inline-block behavior。比如（必须按照这个顺序才可以，也不可以写在同一个选择器中，即使同一个选择器也要写两次）
+
+        div.test { display: inline-block; }
+        div.test { display: inline; }
 
 综上，在IE 7-中，inline-block的触发条件是：**拥有hasLayout属性的内联元素**。
 
@@ -50,7 +54,7 @@ categories: tech
 
 注意第1行和2行是不能调转顺序滴:-)
 
-—————–传说中华丽丽的分割线——————
+<hr/>
 
 ps:最近好衰，记得某晚我用windows live writer写的这篇文章，但是writer的突然crash让我今天重新写了一遍……
 
