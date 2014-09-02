@@ -6,6 +6,10 @@ comments: true
 categories: tech
 ---
 
+__Updates__
+
+* 2014-08-17 感谢[@搞前端的crosser](http://weibo.com/276653168)的提醒，加入了HTTP Response Splitting的内容。
+
 此篇文章的Presentation[戳这里](https://speakerdeck.com/shawn0102/cookie-theft-and-session-hijacking-1)。
 
 ## 一、cookie的基本特性
@@ -157,6 +161,60 @@ http trace是让我们的web服务器将客户端的所有请求信息返回给�
 
 另外提一点，当浏览器没有禁止异步发起trace的时代，很多开发者都关闭了web server的trace支持来防御XST攻击。但攻击者在特定的情况下还可以绕过，用户使用了代理服务器，而代理服务器没有关闭trace支持，这样又可以trace了。
 
+### HTTP Response Splitting
+
+* [参考1](https://www.hackthissite.org/articles/read/915)
+* [参考2](https://isisblogs.poly.edu/2013/03/03/http-response-splitting/)
+
+通常的XSS攻击都是把输入内容注入到response的content中，HTTP Response Splitting是一种针对header的注入。
+
+例如，一个站点接受参数做302跳转：
+
+    www.example.com/?r=http://baidu.com
+
+request信息：
+
+    GET /example.com?r=http://baidu.com\r\n
+    HTTP/1.1\r\n
+    Host: example.com\r\n
+    \r\n
+
+response:
+
+    HTTP/1.1 302 Found\r\n
+    Location: http://baidu.com\r\n
+    Content-Type: text/html\r\n
+    \r\n
+
+这样页面就302跳转到百度了。攻击者利用r参数可以注入header，r参数不是简单的url，而是包含`\r\n`的header信息：
+
+    http://example.com/?r=%0d%0aHTTP/1.1%20200%20OK%0d%0aContent-Type:%20text/html%0d%0aX-XSS-Protection:%200%0d%0a%0d%0a%3Chtml%3E%3Cscript%3Ealert(document.cookie)%3C/script%3E%3Ch1%3EDefaced!%3C/h1%3E%3C/html%3E
+    
+response变成了：
+
+    HTTP/1.1 302 Found\r\n
+    Location: \r\n
+    HTTP/1.1 200 OK\r\n
+    Content-Type: text/html\r\n
+    X-XSS-Protection: 0\r\n
+    
+    <html><script>alert(document.cookie)</script><h1>Defaced!</h1></html>
+    Content-Type: text/html\r\n
+    \r\n
+
+有两个攻击要点：
+
+* 指定X=XSS-Protection: 0 ，关闭浏览器的xss保护机制。
+* 注入脚本
+
+__防御__
+
+针对header的内容做过滤，不能漏掉`\r\n`，特别是Location，host，referrer等。
+
+
+说到底，这也是一种XSS攻击，只是攻击方式与普通的不太一样。针对header的攻击还可以做SQL注入等，防御的原则是对所有的输入进行sanitize，包括非用户输入的内容，比如referrer这种一般由浏览器带过来的信息，因为请求完全可以被伪造，未必来自浏览器。
+
+
 ### 网络监听(network eavesdropping/network sniffing)
 
 以上是利用上层应用的特性的几种攻击方式，cookie不仅存在于上层应用中，更流转于请求中。上层应用获取不到后，攻击者可以转而从网络请求中获取。
@@ -186,7 +244,7 @@ __防御__
 
 https是加密信道，在此信道上传输的内容对中间人都是不可见的。但https是有成本的。
 
-内容加密比较好理解，例如对password先加密再传输。但是对于标识session的cookie这种**标识性信息**是无法通过内容加密得到保护的。
+内容加密比较好理解，例如对password先加密再传输。但是对于标识session的cookie这种标识性信息是无法通过内容加密得到保护的。
 
 那么，使用https的站点就可以高枕无忧了吗？事实上，一些细节上的处理不当同样会暴露出攻击风险。
 
@@ -202,7 +260,7 @@ __防御__
 
 ### https站点攻击：301重定向
 
-例如www.example.com只支持https协议，当用户直接输入example.com（大部分用户都不会手动输入协议前缀），web server通常的处理是返回301要求浏览器重定向到https://www.example.com。这次301请求是http的！而且带了cookie，这样又将cookie明文暴露在网络上了。
+例如www.example.com只支持https协议，当用户直接输入example.com（大部分用户都不会手动输入协议前缀），web server通常的处理是返回301要求浏览器重定向到`https://www.example.com`。这次301请求是http的！而且带了cookie，这样又将cookie明文暴露在网络上了。
 
 __防御1__
 
